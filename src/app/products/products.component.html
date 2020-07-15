@@ -1,1 +1,30 @@
-<p>products works!</p>
+
+<div class="container">
+  <div class="card-deck">
+    <div *ngFor="let item of items | async">
+       <div class="card-mb-4">
+       <a [routerLink]="['/product-view',item.SKU]"> <h3 class="card-title">{{ item.productName }} &nbsp; {{item.color}}</h3>
+        <img class="card-img-top img-fluid" src="{{item.pic}}">
+       </a> 
+       <div class="card-body">
+        <h2 class="card-text"> <span class="badge badge-warning">{{ item.price| currency}}</span></h2>
+       <!-- Counter-->
+        <div class="form">
+          <div class="form-check-inline">
+          <button class="btn btn-primary" (click)="decrease()"><i class="fa fa-minus"></i></button>
+          </div>
+          <div class="form-check-inline  col-xs-3">
+           <input  type="text" style="text-align: center;" [(ngModel)]="quantity">
+          </div>
+          <div class="form-check-inline">
+          <button class="btn btn-primary" (click)="increase()"><i class="fa fa-plus"></i></button>
+          </div>  
+        </div>
+        <!-- End Counter-->
+        <a [routerLink]="['/cart',item.SKU]" class="btn btn-primary">Buy Now</a> 
+       </div>
+     </div>
+    </div>
+  </div>  
+</div> 
+

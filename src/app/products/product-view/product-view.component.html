@@ -1,0 +1,99 @@
+ 
+<link 
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+rel="stylesheet"
+integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" 
+crossorigin="anonymous"
+>
+<script 
+src="https://code.jquery.com/jquery-2.2.2.min.js" 
+integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" 
+crossorigin="anonymous"></script>
+<script 
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
+integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
+crossorigin="anonymous"></script>
+ <!--                                 Bootstrap styles                     -->
+<div *ngFor="let item of items | async"> <!--Product selection-->
+ <div *ngIf="item.SKU==id">     
+    <div class="container">
+     <div class="row" style="text-align: center;">
+      <div class="col-md-6"><!-- Product picture-->
+          <img src="{{item.pic}}" alt="{{item.productName}}"class="image-responsive" />
+      </div>
+      <div class="col-md-6"> <!-- Product description and actions-->
+         <h1>{{item.productName}}</h1>
+         <h2><span class="label label-warning">Exclusive</span></h2>
+         <h2>Color: {{item.color}}</h2>
+         <p>Duvet Cover Set description.</p>   
+         <h3> In Stock</h3>
+         <h2 class="product-price">Price: {{item.price|currency}}</h2>    
+        <div class="row" style="text-align: center;">
+         <div class="col-md-4"></div>
+         <div class="col-md-4"> <!-- Product rating-->
+          <span class="glyphicon glyphicon-star" style="color: goldenrod;"></span>
+          <span class="glyphicon glyphicon-star" style="color: goldenrod;"></span>
+           <span class="glyphicon glyphicon-star" style="color: goldenrod;"></span>
+           <span class="glyphicon glyphicon-star" style="color: goldenrod;"></span>
+           <span class="glyphicon glyphicon-star-empty" style="color: goldenrod;"></span>
+           &nbsp;&nbsp; <p>Write a Review</p>
+         </div>
+      </div>
+
+        <!--Counter-->
+        <div class="col-md-2"></div>
+          <div class="form-group row" style="text-align: center;"> 
+            <div class="col-md-2"></div>
+              <button class=" btn-sm btn-primary" (click)="minus()"><i class="fa fa-chevron-left"></i></button>
+              <div class="col-md-2">
+               <input  class="form-control input-md" style="text-align: center;"value={{quantity}}>
+              </div> 
+              <button class=" btn-sm btn-primary" (click)="plus()"><i class="fa fa-chevron-right"></i></button>
+             &nbsp;&nbsp;&nbsp;
+              <a [routerLink]="['/cart',item.SKU]" class="btn btn-lg btn-danger btn-full-width">Buy It Now </a>   
+          </div>
+           
+      </div> <!-- end of product text and actions-->
+   </div>   <!-- end of row -->
+</div> <!-- end of container -->
+<!-- Nav tabs -->
+<div class="row">
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+     <a  href="#description"
+      aria-controls="description"
+      role="tab"
+      data-toggle="tab"
+     >Description</a>
+    </li>
+    <li role="presentation">
+     <a href="#features"
+      aria-controls="features"
+      role="tab"
+      data-toggle="tab"
+     >Features</a>
+    </li>
+    <li role="presentation">
+     <a href="#reviews"
+      aria-controls="reviews"
+      role="tab"
+      data-toggle="tab"
+     >Reviews</a>
+    </li>
+   </ul>
+</div> <!-- end of row-->   
+
+<div class="tab-content">
+   <div role="tabpanel" class="tab-pane fade in active" id="description">
+      <p > Product description goes here.  </p>
+  </div>
+  <div role="tabpanel" class="tab-pane fade in" id="reviews">
+    <p > Product reviews go here.  </p>
+</div>
+ <div role="tabpanel" class="tab-pane fade in" id="features">
+  <p >   Product features here.   </p>
+ </div>
+</div>
+<!-- End of Tabs-->
+
+

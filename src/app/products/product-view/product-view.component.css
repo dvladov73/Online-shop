@@ -1,0 +1,13 @@
+.image-responsive{
+ width: 100%;
+ 
+}
+.add-to-cart .btn-qty {
+    width: 52px;
+    height: 46px;
+    background-color: brown;
+  }
+  
+.col{
+        margin: 10px;
+}

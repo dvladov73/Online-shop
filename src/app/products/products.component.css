@@ -1,0 +1,13 @@
+.prod-img{
+    display:inline-flex;
+    width:500px;
+    height:500px;
+    object-fit: cover;
+}
+.card-img-top{
+    width:250px;
+}
+.card-mb-4 {
+    text-align: center;
+    padding:20px;
+}

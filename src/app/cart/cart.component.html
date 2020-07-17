@@ -1,28 +1,93 @@
-
+<div *ngIf="!isVisible">
 <div *ngFor="let item of items |async"> 
     
   <div *ngIf="item.SKU==id"> 
      <div class="container-fluid">
-       <div class="row">
-           <div class="col-md-2">
-               <img src="{{item.pic}}" width="100px">
-           </div>
-           <div class="col-md-4">
-            <h4>{{item.productName}}</h4>
-            <h4>{{item.color}}</h4>
-           </div> 
-           <div class="col-md-2">
-            <h4>{{item.price|currency}}</h4>
-           </div> 
-           <div class="col-md-2">
-            <h4>{{quantity}}</h4>
-           </div> 
-           <div class="col-md-2">
-            <h4>Total</h4>
-           </div>
-
+       <div class="row" style="padding-top:20px;">
+           <div class="col-md-2"> <img src="{{item.pic}}" width="100px">      </div>
+           <div class="col-md-2 cart-text">{{item.productName}}:{{item.color}}</div> 
+           <div class="col-md-2 cart-text"> Price: {{item.price|currency}}     </div> 
+           <div class="col-md-3">
+       <!--Counter-->
+            <div class="form-group row" style="text-align: center;"> 
+              <button class=" btn-sm btn-primary" (click)="minus()"><i class="fa fa-chevron-left"></i></button>
+              <div class="col-md-3">
+               <input  class="form-control input-md" style="text-align: center;"value={{quantity}}>
+              </div> 
+              <button class=" btn-sm btn-primary" (click)="plus()"><i class="fa fa-chevron-right"></i></button>
+            </div>
+        <!-- End of Counter -->   
+          </div> 
+          <div class="col-md-3 cart-text-bold"> Total:{{quantity*item.price|currency}}</div>
+      </div>
+      <div class="row" style="padding-top:50px;padding-bottom:150px;">
+       <div class="col-md-4"> 
+        <a  [routerLink]="['/products']" class=" btn-lg btn-primary">Continue shopping</a>
+       </div> 
+       <div class="col-md-4"> </div>
+       <div class="col-md-4">
+        <button class=" btn-lg btn-danger" (click)="shipping()">Enter Shipping details</button>
        </div>
-     </div>  
+     </div>
+    </div>  
   </div> 
-</div>            
-
+</div>  
+</div>
+<div *ngIf="isVisible" class="container">
+  <div class="row" style="padding-top:20px; padding-bottom:150px;">
+    <div class="card-deck col-md-6">
+      <div class="card" style="padding:0px;">
+        <div class="card-body" style="text-align: center;"> 
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+            <div formGroupName="personalData" novalidate>
+              <i class="fa fa-envelope"></i> &nbsp; <label> E-mail</label>&nbsp;<input formControlName="email" /> <br>
+              <i class="fa fa-user"></i> &nbsp;<label> Your Name</label>&nbsp; <input formControlName="name" /> <br>
+              <label  style="text-align: center; font-weight: bold;"> Shipping Address</label><br>
+              <div class="md-form">
+               <label> Street & number</label>&nbsp;<input formControlName="address" />
+              </div>
+              <label> City</label>&nbsp;<input formControlName="city" /><br>
+              <label> State/Province</label>&nbsp;<input formControlName="state" /> <br>
+              <label> ZIP/Postal code</label>&nbsp; <input formControlName="code" /> <br>
+              <label> Country</label>&nbsp;
+              <select formControlName="country">
+                <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+              </select>
+            </div>
+                 
+            
+          <!--  <button type="submit" [disabled]="contactForm.pristine">Save</button>-->
+            <button type="reset" class="btn-md btn-primary" > 
+                <i class="fa fa-chevron-left"></i> Back to Shopping 
+            </button>&nbsp;&nbsp;
+            <button type="reset"  class="btn-md btn-danger" (click)="confirm()">
+                Proceed to payment <i class="fa fa-chevron-right"></i> 
+            </button>
+          </form>
+        </div>
+        </div> 
+    </div>
+    <div class="col-md-6">
+     <div class="card">
+       <div class="card-body">
+         <h2 style="text-align: center;">Order Total</h2>
+         <div *ngFor="let item of items|async">
+          <div *ngIf="item.SKU==id"> 
+           <h4>{{item.productName}}:{{item.color}}</h4>
+           <h4>Quantity: {{quantity}}</h4>
+           <h4>Price: {{item.price|currency}}</h4>
+           <h4>Total: {{quantity*item.price|currency}}</h4>
+           <label> Select Your Shipping option</label>&nbsp;
+            <select [(ngModel)]="s_price" (change)="s_cost()">
+              <option *ngFor="let shipping of shippings" [ngValue]="shipping">{{shipping.type}}</option>
+            </select> <br>
+           <h4>Shipping:  {{sp|currency}}   </h4> 
+           <h4>Order Total including Shipping:  {{quantity*item.price+sp|currency}}   </h4> 
+          
+          </div>
+        </div>
+       </div>
+     </div>
+    </div>          
+  </div>
+</div>  

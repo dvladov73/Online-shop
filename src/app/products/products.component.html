@@ -8,7 +8,7 @@
        </a> 
        <div class="card-body">
         <h2 class="card-text"> <span class="badge badge-warning">{{ item.price| currency}}</span></h2>
-       <!-- Counter-->
+       <!-- Counter--
         <div class="form">
           <div class="form-check-inline">
           <button class="btn btn-primary" (click)="decrease()"><i class="fa fa-minus"></i></button>
@@ -20,8 +20,9 @@
           <button class="btn btn-primary" (click)="increase()"><i class="fa fa-plus"></i></button>
           </div>  
         </div>
-        <!-- End Counter-->
-        <a [routerLink]="['/cart',item.SKU]" class="btn btn-primary">Buy Now</a> 
+        !--End Counter-->
+        <a [routerLink]="['/cart',item.SKU]" class="btn btn-md btn-danger">Buy Now</a> &nbsp;&nbsp;
+        <a [routerLink]="['/product-view',item.SKU]" class="btn btn-md btn-primary">View details</a> 
        </div>
      </div>
     </div>

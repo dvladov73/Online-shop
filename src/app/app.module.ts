@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { ReactiveFormsModule } from '@angular/forms'
 import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
@@ -19,6 +20,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { ProductViewComponent } from './products/product-view/product-view.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { ProductViewComponent } from './products/product-view/product-view.compo
     UserComponent,
     SignInComponent,
     SignUpComponent,
-    ProductViewComponent
+    ProductViewComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ import { ProductViewComponent } from './products/product-view/product-view.compo
     AngularFirestoreModule,
     AppRoutingModule,
     FormsModule,
- 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

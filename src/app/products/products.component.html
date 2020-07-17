@@ -2,12 +2,14 @@
 <div class="container">
   <div class="card-deck">
     <div *ngFor="let item of items | async">
-       <div class="card-mb-4">
-       <a [routerLink]="['/product-view',item.SKU]"> <h3 class="card-title">{{ item.productName }} &nbsp; {{item.color}}</h3>
-        <img class="card-img-top img-fluid" src="{{item.pic}}">
-       </a> 
+       <div class="card" style="text-align: center;">
+        <h3 class="card-title">{{ item.productName }}</h3> 
+        <h4 class="card-subtitle"> {{item.color}}</h4>
+        <a [routerLink]="['/product-view',item.SKU]">
+           <img class="card-img-top img-fluid" src="{{item.pic}}">
+        </a> 
        <div class="card-body">
-        <h2 class="card-text"> <span class="badge badge-warning">{{ item.price| currency}}</span></h2>
+        <h2 class="card-text" style="text-align: center;"> <span class="badge badge-warning">{{ item.price| currency}}</span></h2>
        <!-- Counter--
         <div class="form">
           <div class="form-check-inline">

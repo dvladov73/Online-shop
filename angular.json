@@ -5,7 +5,9 @@
   "projects": {
     "eshop": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {"@schematics/angular:component": {
+        "styleext": "scss"
+      }},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -24,7 +26,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
+              "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
@@ -123,6 +125,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "eshop"
+    }
+  },
+  "defaultProject": "eshop",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+// Custom.scss
+// Option B: Include parts of Bootstrap
+$theme-colors: (
+  "primary": #14213dff,
+  "danger": #ff4136
+);
+
+$black: #000000ff;
+$oxford-blue: #14213dff;
+$orange-web: #fca311ff;
+$platinum: #e5e5e5ff;
+$white: #ffffffff;
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+

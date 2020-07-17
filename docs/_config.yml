@@ -1,0 +1,8 @@
+title: Online-shop
+description: Home Decor online shop demo
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-minimal
+
+gems:
+  - jekyll-mentions
